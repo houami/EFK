@@ -50,9 +50,9 @@ spec:
           - name: data
             mountPath: /home/app/data
           env:
-            - name: cluster.name
+            - name: CLUSTER_NAME
               value: LogsDashboard
-            - name: node.name
+            - name: NODE_NAME
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.name
@@ -60,6 +60,15 @@ spec:
               value: "es-cluster-0.elasticsearch,es-cluster-1.elasticsearch,es-cluster-2.elasticsearch"
             - name: discovery.zen.minimum_master_nodes
               value: "2"
+            - name: ES_JAVA_OPTS
+              value: -Xms256m -Xmx256m
+            - name: PROCESSORS
+              valueFrom:
+                resourceFieldRef:
+                  resource: limits.cpu
+          resources:
+            limits:
+              cpu: 2
       initContainers:
       - name: fix-permissions
         image: busybox
@@ -69,7 +78,7 @@ spec:
         volumeMounts:
         - name: data
           mountPath: /home/app/data
-      - name: increase-vm-max-map
+      - name: init-sysctl
         image: busybox
         command: ["sysctl", "-w", "vm.max_map_count=262144"]
         securityContext:
