@@ -50,7 +50,7 @@ spec:
           - name: data
             mountPath: /home/app/data
           env:
-            - name: CLUSTER_NAME
+            - name: cluster.name
               value: LogsDashboard
             - name: NODE_NAME
               valueFrom:
