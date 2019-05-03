@@ -1,0 +1,26 @@
+namespace: efk
+
+elasticSearch:
+  port: 9200
+  clusterPort: 9300
+  replicas: 3
+  data: /home/app/data
+  clusterName: LogsDashboard
+  minimum_master_nodes: 2
+  cpu_limit: 2
+  max_map_count: 262144
+  ulimit: 65536
+  storage: 100Gi
+
+fluentd:
+  log: /var/log
+  containerlog: /var/lib/docker/containers
+  cpu_limit: 512Mi
+  cpu_request: 200Mi
+
+kibana:
+  port: 5601
+  replicas: 1
+  image: docker.elastic.co/kibana/kibana:6.4.3
+  cpu_limit: 1000m
+  cpu_request: 100m
