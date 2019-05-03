@@ -58,7 +58,7 @@ spec:
           - name: FLUENT_ELASTICSEARCH_HOST
             value: "elasticsearch.efk.svc.cluster.local"
           - name:  FLUENT_ELASTICSEARCH_PORT
-            value: {{ .Values.elasticSearch.port }}
+            value: "{{ .Values.elasticSearch.port }}"
           - name: FLUENT_ELASTICSEARCH_SCHEME
             value: "http"
           - name: FLUENT_UID
