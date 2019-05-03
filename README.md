@@ -1,6 +1,10 @@
 #### Clone the repository
 
-> helm install --dry-run EFK/
+> https://github.com/houami/EFK.git
+
+#### Helm Install
+
+> helm install --name EFK --dry-run EFK/
 
 #### Accessing the application
 
@@ -8,7 +12,8 @@
 > kubectl port-forward <kibana-pod> 5601:5601 --namespace=efk
 
 
-##### (Pre-Reqs: Helm and Tiller should be running)
+#### Pre-Reqs:
+##### Helm and Tiller should be running
 Helm version : v2.13.1
 
 ##### Installing Helm Client
